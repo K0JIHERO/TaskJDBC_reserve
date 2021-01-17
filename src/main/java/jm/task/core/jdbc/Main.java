@@ -11,7 +11,6 @@ public class Main {
     public static void main(String[] args) throws SQLException {
         UserServiceImpl userService = new UserServiceImpl();
 
-        userService.dropUsersTable();
         userService.createUsersTable();
 
         userService.saveUser("Chuck", "Norris", (byte) 99);

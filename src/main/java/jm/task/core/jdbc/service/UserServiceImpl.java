@@ -15,12 +15,12 @@ public class UserServiceImpl extends UserDaoJDBCImpl implements UserService {
     }
 
     @Override
-    public void createUsersTable() {
+    public void createUsersTable() throws SQLException {
         super.createUsersTable();
     }
 
     @Override
-    public void dropUsersTable() {
+    public void dropUsersTable() throws SQLException {
         super.dropUsersTable();
     }
 

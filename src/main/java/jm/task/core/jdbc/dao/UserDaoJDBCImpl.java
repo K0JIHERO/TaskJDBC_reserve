@@ -14,7 +14,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
     public UserDaoJDBCImpl() {
     }
 
-    public void createUsersTable() {
+    public void createUsersTable() throws SQLException {
         PreparedStatement preparedStatement = null;
 
         String sql = "CREATE TABLE IF NOT EXISTS USER (ID INT NOT NULL AUTO_INCREMENT, NAME VARCHAR(30), LASTNAME VARCHAR(30), AGE INT, PRIMARY KEY (ID));";
@@ -24,11 +24,15 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
         }
 
     }
 
-    public void dropUsersTable() {
+    public void dropUsersTable() throws SQLException {
         PreparedStatement preparedStatement = null;
 
         String sql = "DROP TABLE IF EXISTS USER;";
@@ -42,6 +46,10 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
         }
 
     }
@@ -53,7 +61,6 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
 
         try {
             preparedStatement = connection.prepareStatement(sql);
-//            preparedStatement.setLong(1, 1);// users id
             preparedStatement.setString(1, name);
             preparedStatement.setString(2, lastName);
             preparedStatement.setByte(3, age);
@@ -66,7 +73,6 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
         } finally {
             if (preparedStatement != null) {
                 preparedStatement.close();
-
             }
         }
 
@@ -85,9 +91,6 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
         } finally {
             if (preparedStatement != null) {
                 preparedStatement.close();
-            }
-            if (connection != null) {
-                connection.close();
             }
         }
     }
@@ -131,6 +134,10 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
         }
     }
 }
