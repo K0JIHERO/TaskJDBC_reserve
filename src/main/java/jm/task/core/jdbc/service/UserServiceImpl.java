@@ -1,31 +1,46 @@
 package jm.task.core.jdbc.service;
 
+import com.mysql.jdbc.exceptions.MySQLSyntaxErrorException;
+import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
 import jm.task.core.jdbc.model.User;
+import jm.task.core.jdbc.util.Util;
 
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends UserDaoJDBCImpl implements UserService {
+    public UserServiceImpl() {
+        super();
+    }
+
+    @Override
     public void createUsersTable() {
-
+        super.createUsersTable();
     }
 
+    @Override
     public void dropUsersTable() {
-
+        super.dropUsersTable();
     }
 
-    public void saveUser(String name, String lastName, byte age) {
-
+    @Override
+    public void saveUser(String name, String lastName, byte age) throws SQLException {
+        super.saveUser(name, lastName, age);
     }
 
-    public void removeUserById(long id) {
-
+    @Override
+    public void removeUserById(long id) throws SQLException {
+        super.removeUserById(id);
     }
 
-    public List<User> getAllUsers() {
-        return null;
+    @Override
+    public List<User> getAllUsers() throws SQLException {
+        return super.getAllUsers();
     }
 
-    public void cleanUsersTable() {
-
+    @Override
+    public void cleanUsersTable() throws SQLException {
+        super.cleanUsersTable();
     }
 }
