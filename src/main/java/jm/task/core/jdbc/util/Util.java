@@ -6,16 +6,11 @@ import java.sql.SQLException;
 
 public class Util {
 
-    private static final String DB_DRIVER = "com.mysql.jdbc.Driver";
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/mybd?autoReconnect=true&useSSL=false";
-    private static final String DB_USERNAME = "root";
-    private static final String DB_PASSWORD = "kleopatra27";
-
-    public Connection getConnection() {
+    public static Connection getConnection() {
         Connection connection = null;
         try {
-            Class.forName(DB_DRIVER);
-            connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?autoReconnect=true&useSSL=false", "root", "11111111");
             System.out.println("Connection OK");
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
