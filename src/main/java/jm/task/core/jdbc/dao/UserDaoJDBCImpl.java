@@ -51,6 +51,7 @@ public class UserDaoJDBCImpl implements UserDao {
         }
 
     }
+    public void save(User user){}
 
     public void saveUser(String name, String lastName, byte age) throws SQLException {
         PreparedStatement preparedStatement = null;
